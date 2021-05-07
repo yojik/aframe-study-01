@@ -5,6 +5,22 @@
     <title>Hello, World! - A-Frame 〇×</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <script>
+      function click_square(square_id) {
+        var image = "#circle";
+        document.querySelector("#" + square_id).setAttribute("src", image);
+      }
+      AFRAME.registerComponent('cursor-listener', {
+        init: function () {
+          this.el.addEventListener("click", function (evt) {
+            click_square(this.id);
+          });
+        }
+      });
+    </script>
+
+
   </head>
   <body>
     <a-scene>
@@ -29,7 +45,7 @@
                 親指を右、人差し指を上、中指を手前にする。
                 z軸が奥行(手前が正)になる。
         -->
-        <a-plane id="square0" src="#square" position="-0.25 0 -0.25" rotation="-90 0 0" width="0.25" height="0.25" color="#EEEEEE"></a-plane>
+        <a-plane cursor-listener id="square0" src="#square" position="-0.25 0 -0.25" rotation="-90 0 0" width="0.25" height="0.25" color="#EEEEEE"></a-plane>
         <a-plane id="square1" src="#square" position="-0.25 0 0" rotation="-90 0 0"  width="0.25" height="0.25"  color="#EEEEEE"></a-plane>
         <a-plane id="square2" src="#square" position="-0.25 0 0.25" rotation="-90 0 0"  width="0.25" height="0.25"  color="#EEEEEE"></a-plane>
         
@@ -40,9 +56,12 @@
         <a-plane id="square6" src="#square" position="0.25 0  -0.25" rotation="-90 0 0" width="0.25" height="0.25" color="#EEEEEE"></a-plane>
         <a-plane id="square7" src="#square" position="0.25 0  0" rotation="-90 0 0"  width="0.25" height="0.25"   color="#EEEEEE"></a-plane>
         <a-plane id="square8" src="#square" position="0.25 0  0.25" rotation="-90 0 0"  width="0.25" height="0.25" color="#EEEEEE"></a-plane>
-    </a-entity>
+      </a-entity>
 
-
+      <a-camera position="0 0.5 1" rotation="0 180 0" id="player1">
+        <a-cursor></a-cursor>
+        <a-box color="#998877"></a-box>
+      </a-camera>
     </a-scene>
   </body>
 </html>
