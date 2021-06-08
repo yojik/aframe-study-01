@@ -1,8 +1,8 @@
 version: "3"
 services:
   nginx:
-    image: nginx 
+    image: nginx
     ports:
       - "8080:80"
     volumes:
-      - ./doc:/usr/share/nginx/html
+      - ./docs:/usr/share/nginx/html

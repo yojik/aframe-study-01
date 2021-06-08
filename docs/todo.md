@@ -1,7 +1,7 @@
 # やること
 
 ## a-frame
-- [ ] dom-overlayの塚方
+- [ ] dom-overlayの使い方
 - [ ]  hit-test
 
 ## socket.io 

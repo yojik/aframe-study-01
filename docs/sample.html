@@ -59,16 +59,16 @@
       </a-entity>
 
       <!-- mine camera-->
-      <a-camera active="true" look-controls-enabled="true" scale="0.2 0.2 0.2" position="0 0.5 0.5" rotation="0 0 0" id="player1" >
+      <a-camera active="true" look-controls-enabled="true" scale="0.1 0.1 0.1" position="0 0.5 0.5" rotation="0 0 0" id="player1" >
         <a-cursor></a-cursor>
+        <a-text position="0 1 0" color="blue"  rotation="0 180 0"  value="Player1"></a-text>
         <a-box color="blue"></a-box>
-        <a-entity position="0 1 0"  rotation="0 180 0" bmfont-text="text: Player1; color: black;">
       </a-camera>
 
-      <a-camera active="false"   look-controls-enabled="false" scale="0.2 0.2 0.2" position="0 0.5 -0.5" rotation="0 180 0" id="player2" >
+      <a-camera active="false"   look-controls-enabled="false" scale="0.1 0.1 0.1" position="0 0.5 -0.5" rotation="0 180 0" id="player2" >
         <a-cursor></a-cursor>
         <a-box color="red"></a-box>
-        <a-entity position="0 1 0"   bmfont-text="text: Player1; color: black;">
+        <a-text position="0 1 0" color="red"  rotation="0 180 0"  value="Player2"></a-text>
       </a-camera>
 
     </a-scene>
