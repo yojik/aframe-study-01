@@ -5,8 +5,21 @@
     <title>Hello, World! - A-Frame 〇×</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.1.2/dist/socket.io.min.js"></script>
 
     <script>
+　　　var socket =  io.connect();
+      var player_id;
+
+
+      //ログイン処理
+      (function login() {
+          
+        socket.emit("connected");
+        console.log("ログイン")
+      })();
+    
+
       function click_square(square_id) {
         var image = "#circle";
         document.querySelector("#" + square_id).setAttribute("src", image);

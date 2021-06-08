@@ -19,6 +19,7 @@
   "homepage": "https://github.com/yojik/aframe-study-01#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "serve-index": "^1.9.1"
+    "serve-index": "^1.9.1",
+    "socket.io": "^4.1.2"
   }
 }
