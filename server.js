@@ -24,6 +24,8 @@ io.on('connection',function(socket){
 });
 
 //appじゃなくてhttp
+// WARNING !!! app.listen(3000); will not work here, as it creates a new HTTP server
+// https://socket.io/docs/v3/server-initialization/
 http.listen(8080,()=> {
   console.log('Start Express Server');
 });
