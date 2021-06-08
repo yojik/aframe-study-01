@@ -14,11 +14,27 @@
 
       //ログイン処理
       (function login() {
-          
+        document.querySelectorAll("a-camera").forEach(p=>{
+            playersCamera.setAttribute("camera", "active", false);
+            playersCamera.setAttribute("look-controls", "enabled", false);
+        })
         socket.emit("connected");
         console.log("ログイン")
       })();
-    
+      //サーバ接続後
+      socket.on("set_player", function(p) {
+        player_id = p.id;
+        player_no = p.no
+        var playersCamera = document.querySelector("#" + "player" + player_no);
+        playersCamera.setAttribute("camera", "active", true);
+        playersCamera.setAttribute("look-controls", "enabled", true); 
+        //二番目のユーザが反対側を向いてしまう問題を無理やり解決
+        if(player_no==2){
+          var playersCameraRig = document.querySelector("#" + "rig" + player_no);
+          playersCameraRig.setAttribute("rotation", {x:0,y:180,z:0})
+        }
+    });
+
 
       function click_square(square_id) {
         var image = "#circle";
@@ -72,17 +88,21 @@
       </a-entity>
 
       <!-- mine camera-->
-      <a-camera active="true" look-controls-enabled="true" scale="0.1 0.1 0.1" position="0 0.5 0.5" rotation="0 0 0" id="player1" >
+      <a-entity id="rig1" scale="0.1 0.1 0.1" position="0 0.5 0.5" rotation="0 0 0">
+      <a-camera active="true" look-controls-enabled="true"  id="player1" >
         <a-cursor></a-cursor>
         <a-text position="0 1 0" color="blue"  rotation="0 180 0"  value="Player1"></a-text>
         <a-box color="blue"></a-box>
       </a-camera>
+      </a-entity>
 
-      <a-camera active="false"   look-controls-enabled="false" scale="0.1 0.1 0.1" position="0 0.5 -0.5" rotation="0 180 0" id="player2" >
-        <a-cursor></a-cursor>
-        <a-box color="red"></a-box>
-        <a-text position="0 1 0" color="red"  rotation="0 180 0"  value="Player2"></a-text>
-      </a-camera>
+      <a-entity id="rig2" scale="0.1 0.1 0.1" position="0 0.5 -0.5" rotation="0 180 0">
+        <a-camera active="false"   look-controls-enabled="false"  id="player2" >
+          <a-cursor></a-cursor>
+          <a-box color="red"></a-box>
+          <a-text position="0 1 0" color="red"  rotation="0 180 0"  value="Player2"></a-text>
+        </a-camera>
+      </a-entity>
 
     </a-scene>
   </body>
