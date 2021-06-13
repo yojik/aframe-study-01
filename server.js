@@ -42,6 +42,10 @@ io.on('connection', function (socket) {
   socket.on("camera_tracking", function (camera_data) {
     socket.broadcast.emit("player_moving", camera_data);
   });
+  socket.on("click_square", function (data) {
+    socket.broadcast.emit("change_square", data);
+  });
+
 
 
 
