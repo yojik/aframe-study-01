@@ -40,7 +40,7 @@ io.on('connection', function (socket) {
     }
   });
   socket.on("camera_tracking", function (camera_data) {
-    //console.log(camera_data)
+    socket.broadcast.emit("player_moving", camera_data);
   });
 
 
