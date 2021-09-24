@@ -53,9 +53,10 @@
       targetCamera.object3D.position.x =  data.cameraPosition.x
       targetCamera.object3D.position.y =  data.cameraPosition.y      
       targetCamera.object3D.position.z =  data.cameraPosition.z
-      console.log("Position: " +  data.cameraPosition.x);
 
-      //なんかおしゃれじゃない
+      // console.log(data.arPosition)
+      // console.log(data.arRotation)
+
     }
 
     function click_square(square_id) {
@@ -88,10 +89,6 @@
       tick: function () {
         if(this.data.player_no!=player_no) return;
         var camera =this.el;
-
-        var position = new THREE.Vector3()
-        var quaternion = new THREE.Quaternion()
-
         var cameraPosition = {
           x: camera.object3D.position.x,
           y: camera.object3D.position.y,
@@ -101,13 +98,27 @@
           x: camera.object3D.rotation.x,
           y: camera.object3D.rotation.y
         }
+
+        //調査用ブロック
+        const position = new THREE.Vector3();
+        const rotation = new THREE.Quaternion();
+        const euler = new THREE.Euler();
+        const matrix = new THREE.Matrix4();
+        this.el.object3D.updateMatrixWorld();
+        position.setFromMatrixPosition(this.el.object3D.matrixWorld); // Vector3
+        rotation.setFromRotationMatrix(matrix.extractRotation(this.el.object3D.matrixWorld));      
+
+
         var player_camera = {
           player_id: player_id,
           player_no: this.data.player_no,
           cameraPosition:cameraPosition,
-          cameraRotation:cameraRotation
+          cameraRotation:cameraRotation,
+          arPosition: position,
+          arRotation: rotation
 
         }
+
         socket.emit("camera_tracking",player_camera);
       }
     });
