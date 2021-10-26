@@ -7,7 +7,7 @@
   <meta name="description" content="Hello, World! - A-Frame">
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.1.2/dist/socket.io.min.js"></script>
-  <script src="https//unpkg.com/alpinejs" defer></script>
+  <script src="https://unpkg.com/browse/alpinejs@1.1.2/" defer></script>
   <script>
     var socket = io.connect();
     var player_id;
@@ -54,8 +54,6 @@
       targetCamera.object3D.position.y =  data.cameraPosition.y      
       targetCamera.object3D.position.z =  data.cameraPosition.z
 
-      // console.log(data.arPosition)
-      // console.log(data.arRotation)
 
     }
 
@@ -98,27 +96,12 @@
           x: camera.object3D.rotation.x,
           y: camera.object3D.rotation.y
         }
-
-        //調査用ブロック
-        const position = new THREE.Vector3();
-        const rotation = new THREE.Quaternion();
-        const euler = new THREE.Euler();
-        const matrix = new THREE.Matrix4();
-        this.el.object3D.updateMatrixWorld();
-        position.setFromMatrixPosition(this.el.object3D.matrixWorld); // Vector3
-        rotation.setFromRotationMatrix(matrix.extractRotation(this.el.object3D.matrixWorld));      
-
-
         var player_camera = {
           player_id: player_id,
           player_no: this.data.player_no,
           cameraPosition:cameraPosition,
           cameraRotation:cameraRotation,
-          arPosition: position,
-          arRotation: rotation
-
         }
-
         socket.emit("camera_tracking",player_camera);
       }
     });
