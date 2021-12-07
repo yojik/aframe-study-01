@@ -5,6 +5,10 @@
   <meta charset="utf-8">
   <title>Hello, World! - A-Frame 〇×</title>
   <meta name="description" content="Hello, World! - A-Frame">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+
   <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@02f028bf319915bd5de1ef8b033495fe80b6729b/dist/aframe-master.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.1.2/dist/socket.io.min.js"></script>
   <script src="https://unpkg.com/browse/alpinejs@1.1.2/" defer></script>
@@ -24,6 +28,8 @@
     })();
     //サーバ接続後
     socket.on("set_player", function (p) {
+
+
       player_id = p.id;
       player_no = p.no
       var playersCamera = document.querySelector("#" + "player" + player_no);
@@ -153,7 +159,10 @@
     <a-entity  id="rig1" scale="0.1 0.1 0.1" position="0 0.3 0.3" rotation="0 0 0">
       <a-camera camera-tracker="player_no:1" active="true" look-controls-enabled="true" id="player1">
         <a-cursor></a-cursor>
-        <a-text position="0 1 0" color="blue" rotation="0 180 0" value="Player1"></a-text>
+        <a-text position="0 1 0" color="blue" rotation="0 180 0" 
+          font="./font/noto-sans-cjk-jp-msdf.json"
+          font-image="./font/noto-sans-cjk-jp-msdf.png"
+        value="日本語1"></a-text>
         <a-box color="blue"></a-box>
       </a-camera>
     </a-entity>
@@ -162,7 +171,10 @@
       <a-camera  camera-tracker="player_no:2" active="false" look-controls-enabled="false" id="player2">
         <a-cursor></a-cursor>
         <a-box color="red"></a-box>
-        <a-text position="0 1 0" color="red" rotation="0 180 0" value="Player2"></a-text>
+        <a-text position="0 1 0" color="red" rotation="0 180 0" 
+          font="./font/noto-sans-cjk-jp-msdf.json"
+          font-image="./font/noto-sans-cjk-jp-msdf.png"
+        value="日本語2"></a-text>
       </a-camera>
     </a-entity>
 
