@@ -21,7 +21,6 @@
   "dependencies": {
     "@pixiv/three-vrm": "^0.6.4",
     "@types/three": "^0.131.0",
-    "aframe": "^1.2.0",
     "express": "^4.17.1",
     "serve-index": "^1.9.1",
     "socket.io": "^4.1.2",
